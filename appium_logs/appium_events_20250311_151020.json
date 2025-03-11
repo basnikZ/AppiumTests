@@ -1,0 +1,111 @@
+{
+  "events": {
+    "commands": [
+      {
+        "cmd": "findElement",
+        "startTime": 1741702203134,
+        "endTime": 1741702204043
+      },
+      {
+        "cmd": "proxyReqRes",
+        "startTime": 1741702204047,
+        "endTime": 1741702204076
+      },
+      {
+        "cmd": "click",
+        "startTime": 1741702204078,
+        "endTime": 1741702204178
+      },
+      {
+        "cmd": "findElement",
+        "startTime": 1741702206186,
+        "endTime": 1741702206468
+      },
+      {
+        "cmd": "proxyReqRes",
+        "startTime": 1741702206470,
+        "endTime": 1741702206489
+      },
+      {
+        "cmd": "click",
+        "startTime": 1741702206491,
+        "endTime": 1741702206579
+      },
+      {
+        "cmd": "findElement",
+        "startTime": 1741702208586,
+        "endTime": 1741702208898
+      },
+      {
+        "cmd": "proxyReqRes",
+        "startTime": 1741702208900,
+        "endTime": 1741702208923
+      },
+      {
+        "cmd": "findElements",
+        "startTime": 1741702208924,
+        "endTime": 1741702209141
+      },
+      {
+        "cmd": "getAttribute",
+        "startTime": 1741702209144,
+        "endTime": 1741702209160
+      },
+      {
+        "cmd": "click",
+        "startTime": 1741702209161,
+        "endTime": 1741702209245
+      },
+      {
+        "cmd": "getAttribute",
+        "startTime": 1741702212250,
+        "endTime": 1741702212278
+      },
+      {
+        "cmd": "findElement",
+        "startTime": 1741702215287,
+        "endTime": 1741702216064
+      },
+      {
+        "cmd": "findElementsFromElement",
+        "startTime": 1741702216066,
+        "endTime": 1741702216976
+      },
+      {
+        "cmd": "proxyReqRes",
+        "startTime": 1741702216978,
+        "endTime": 1741702216998
+      },
+      {
+        "cmd": "proxyReqRes",
+        "startTime": 1741702216999,
+        "endTime": 1741702217017
+      },
+      {
+        "cmd": "proxyReqRes",
+        "startTime": 1741702217018,
+        "endTime": 1741702217038
+      },
+      {
+        "cmd": "proxyReqRes",
+        "startTime": 1741702217039,
+        "endTime": 1741702217064
+      },
+      {
+        "cmd": "proxyReqRes",
+        "startTime": 1741702217065,
+        "endTime": 1741702217091
+      },
+      {
+        "cmd": "proxyReqRes",
+        "startTime": 1741702219100,
+        "endTime": 1741702219812
+      },
+      {
+        "cmd": "proxyReqRes",
+        "startTime": 1741702220816,
+        "endTime": 1741702220931
+      }
+    ]
+  }
+}

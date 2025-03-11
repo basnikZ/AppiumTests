@@ -1,0 +1,48 @@
+
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Appium Events - 20250311_151020</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; }
+                        h1 { color: #333; }
+                        .event { margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+                        .event-name { font-weight: bold; color: #0066cc; }
+                        .event-time { color: #666; }
+                        pre { background-color: #f9f9f9; padding: 10px; border-radius: 5px; overflow-x: auto; }
+                    </style>
+                </head>
+                <body>
+                    <h1>Appium Events - 20250311_151020</h1>
+                    <p>Pro zobrazení detailních dat otevřete soubor: appium_logs/appium_events_20250311_151020.json</p>
+                    <script>
+                        // Načtení dat z JSON souboru
+                        fetch('appium_logs/appium_events_20250311_151020.json')
+                            .then(response => response.json())
+                            .then(data => {
+                                // Zobrazení událostí
+                                const eventsDiv = document.createElement('div');
+                                eventsDiv.innerHTML = '<h2>Events</h2>';
+                                document.body.appendChild(eventsDiv);
+                                
+                                if (data.events) {
+                                    for (const event of data.events) {
+                                        const eventDiv = document.createElement('div');
+                                        eventDiv.className = 'event';
+                                        eventDiv.innerHTML = `
+                                            <div class="event-name">${event.name || 'Unnamed Event'}</div>
+                                            <div class="event-time">Time: ${event.time || 'N/A'}</div>
+                                            <pre>${JSON.stringify(event, null, 2)}</pre>
+                                        `;
+                                        eventsDiv.appendChild(eventDiv);
+                                    }
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error loading data:', error);
+                                document.body.innerHTML += `<p style="color: red;">Error loading data: ${error.message}</p>`;
+                            });
+                    </script>
+                </body>
+                </html>
+                
