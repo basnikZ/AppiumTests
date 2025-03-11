@@ -14,20 +14,28 @@ Test was developed and verified on:
 ## Prerequisites
 
 - Python 3.11+
-- Appium Server 2.0+
-- Android SDK
-- ADB (Android Debug Bridge)
-- Connected Android device with USB debugging enabled
+- Appium Desktop 2.0+ (with UiAutomator2 driver)
+- Android device with:
+  - USB debugging enabled
+  - Settings app accessible
+  - Permission to modify WiFi settings
+
+## Required Python Packages
+- Appium-Python-Client==3.1.1
+- selenium==4.18.1
+- urllib3==2.2.1
 
 ## Installation
 
-1. Clone the repository:
+1. Download and install Appium Desktop from [Appium GitHub Releases](https://github.com/appium/appium-desktop/releases)
+
+2. Clone the repository:
 ```bash
 git clone [repository-url]
 cd AppiumTests
 ```
 
-2. Create and activate virtual environment:
+3. Create and activate virtual environment:
 ```bash
 python -m venv venv
 source venv/bin/activate  # For Linux/Mac
@@ -35,21 +43,25 @@ source venv/bin/activate  # For Linux/Mac
 .\venv\Scripts\activate  # For Windows
 ```
 
-3. Install dependencies:
+4. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
 ## Configuration
 
-1. Start Appium server:
-```bash
-appium --use-drivers=uiautomator2 --allow-insecure=chromedriver_autodownload
-```
+1. Enable USB debugging on your Android device:
+   - Go to Settings > About phone
+   - Tap Build number 7 times to enable Developer options
+   - Go to Settings > System > Developer options
+   - Enable USB debugging
 
-2. Connect your device via USB and enable USB debugging
+2. Start Appium Desktop:
+   - Click 'Start Server'
+   - Server address should be: http://127.0.0.1:4723
+   - Click 'Start Inspector Session' to verify server is working
 
-3. Verify device connection:
+3. Connect your device via USB and verify connection:
 ```bash
 adb devices
 ```
@@ -71,11 +83,45 @@ The test performs the following steps:
 6. Returns WiFi to its original state
 7. Generates detailed report
 
-## Test Output
+## Test Output and Viewing Results
 
-- JSON log in `appium_logs/appium_events_[timestamp].json`
-- HTML report in `appium_logs/appium_events_[timestamp].html`
-- Screenshots of key steps integrated in HTML report
+The test generates two types of output files in the `appium_logs` directory:
+
+### JSON Log
+- Located at: `appium_logs/appium_events_[timestamp].json`
+- Contains raw test data and events
+- Useful for debugging or data analysis
+
+### HTML Report
+- Located at: `appium_logs/appium_events_[timestamp].html`
+- Interactive visual report with:
+  - Test summary
+  - Timeline of events
+  - Screenshots at key steps
+  - Detailed event information
+
+### Viewing Reports
+
+1. **Direct HTML Viewing:**
+   - Navigate to `appium_logs` directory
+   - Open the `.html` file in any web browser
+   - All data and screenshots are embedded in the file
+
+2. **Using Local Server (Optional):**
+   ```bash
+   cd appium_logs
+   python -m http.server 8000
+   ```
+   Then open `http://localhost:8000` in your browser
+
+### Screenshots
+- Automatically captured at key moments:
+  - Initial app state
+  - After navigation steps
+  - WiFi network list
+  - Error states (if any)
+- Embedded directly in the HTML report
+- Base64 encoded to avoid external file dependencies
 
 ## Known Limitations
 
@@ -96,7 +142,15 @@ adb shell uiautomator dump
 adb pull /sdcard/window_dump.xml
 ```
 
-2. Modify selectors in `wifi_test.py` according to your XML structure
+2. Open `window_dump.xml` to analyze the element structure
+
+3. Common issues:
+   - **Connection refused:** Make sure Appium Desktop is running
+   - **Device not found:** Check USB connection and debugging status
+   - **Element not found:** Different UI structure, adjust selectors
+   - **Permission denied:** Check app permissions on device
+
+4. Modify selectors in `wifi_test.py` according to your XML structure
 
 ## Contributing
 
@@ -104,6 +158,7 @@ If you have modifications for other devices or improvements, please create a Pul
 - Device description
 - System version
 - Changes made
+- Test results and screenshots
 
 ## License
 
