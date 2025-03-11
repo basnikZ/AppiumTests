@@ -5,11 +5,11 @@ import json
 import glob
 import datetime
 
-# Konfigurace serveru
+# Configuration of server
 PORT = 8000
 DIRECTORY = "appium_logs"
 
-# Vytvoření složky pro logy, pokud neexistuje
+# Create file for logs, if not exists
 if not os.path.exists(DIRECTORY):
     os.makedirs(DIRECTORY)
 
@@ -23,11 +23,11 @@ class AppiumLogHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             
-            # Získání seznamu všech log souborů
+            # Get list of all log files
             log_files = glob.glob(os.path.join(DIRECTORY, "*.html"))
             log_files.sort(key=os.path.getmtime, reverse=True)
             
-            # Vytvoření HTML stránky se seznamem logů
+            # Create HTML page with list of logs
             html = f"""
             <!DOCTYPE html>
             <html>
